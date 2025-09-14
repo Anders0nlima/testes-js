@@ -1,0 +1,38 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.preview {
+  flex: 1; /* ocupa todo espaço disponível */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #fdfdfd;
+}
+
+.loading {
+  text-align: center;
+}
+
+.footer {
+  padding: 16px;
+  text-align: center;
+  background: #f7f7f7;
+  border-top: 1px solid #e2e2e2;
+}
+
+.footer p {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 4px;
+  text-decoration: none;
+  font-weight: 500;
+}

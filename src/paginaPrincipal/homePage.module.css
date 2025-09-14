@@ -1,0 +1,47 @@
+.homepage {
+  padding: 32px;
+  font-family: system-ui, sans-serif;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.cardLink {
+  text-decoration: none; /* remove sublinhado do link */
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  color: inherit; /* mantém cor do texto */
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+}
