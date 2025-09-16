@@ -1,89 +1,284 @@
-/* Estrutura geral da página */
-.page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* ===== Reset e Configurações Globais ===== */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Navbar fixa no topo */
-.header {
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Estrutura Base do Navbar ===== */
+.navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px 16px;
-  background: linear-gradient(90deg, #ffffff, #f8f8f9);
-  border-bottom: 1px solid #e2e2e2;
-  position: sticky;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+  height: 60px;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  transition: all 0.6s ease;
+  width: 100%;
 }
 
-.brand {
-  font-weight: 700;
-  font-size: 1.1rem;
+.navbar.fixed {
+  background-color: rgba(0, 0, 0, 1) !important;
 }
 
-/* Navegação */
-.nav {
+.navbarLeft,
+.navbarCenter,
+.navbarRight {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
-.nav ul {
+.navbarCenter {
+  flex-grow: 1;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+}
+
+.navbarCenter a.logoLink {
   display: flex;
-  gap: 14px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-}
-
-/* Conteúdo ocupa todo o espaço restante */
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 24px;
+  gap: 10px;
+  text-decoration: none;
+  border-bottom: none;
+  margin-top: 15px;
 }
 
-/* botão hamburguer (mobile) */
-.burger {
-  display: none;
-  background: transparent;
+/* ===== Componentes Interativos ===== */
+.iconButton {
+  background: none;
   border: none;
-  font-size: 1.4rem;
+  color: white;
   cursor: pointer;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-/* responsividade */
-@media (max-width: 720px) {
-  .nav {
-    position: absolute;
-    top: 56px;
-    right: 16px;
-    background: white;
-    border: 1px solid #ddd;
-    padding: 12px;
-    border-radius: 8px;
+.iconButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.iconButton:active {
+  transform: scale(0.95);
+}
+
+.icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* ===== Seletor de Idioma ===== */
+.languageSelector {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.languagePill {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50px;
+  padding: 6px 15px 6px 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 40px;
+}
+
+.languagePill:hover, 
+.languagePill.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.flagContainer {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  background: white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.flagImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.languageName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.chevron {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.chevron.rotate {
+  transform: rotate(180deg);
+}
+
+.languageDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 8px;
+  padding: 8px 0;
+  width: 160px;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.languageOption {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.languageOption:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.languageOption.selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Componentes Especiais ===== */
+.menuOverlay {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 2rem;
+  z-index: 999;
+  overflow-y: auto;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+.noScroll {
+  overflow: hidden !important;
+  height: 100%;
+}
+
+body.noScroll {
+  position: fixed;
+  width: 100%;
+}
+
+/* ===== Animações ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsividade - Mobile ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem;
+    height: 50px;
+  }
+
+  .navbarCenter {
+    position: static;
+    transform: none;
+    left: auto;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 15px;
+    flex-grow: 0;
+  }
+
+  .navbarCenter a.logoLink {
+    margin-top: 0;
+  }
+
+  .navbarLeft, 
+  .navbarRight {
+    flex: 1;
+  }
+
+  .navbarRight {
+    justify-content: flex-end;
+  }
+
+  .iconButton {
+    margin: 0 0.3rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .languageSelector {
+    margin-left: 10px;
+
+  }
+
+  .languagePill {
     display: none;
-    flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 6px 10px 6px 6px;
+    height: 36px;
   }
 
-  .nav.open {
-    display: flex;
+  .languageName {
+    display: none; 
   }
 
-  .burger {
-    display: inline-flex;
+  .menuOverlay {
+    top: 50px; /* Ajusta para a altura reduzida do navbar */
+    padding: 1rem;
+  }
+
+  /* Opcional: Menu hamburger se aplicável */
+  .desktopMenu {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: block;
   }
 }

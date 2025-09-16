@@ -9,7 +9,7 @@ import styles from "./studyPage.module.css";
  */
 const componentMap = {
   navbar: React.lazy(() => import("../studies/navbar/Navbar")),
-  // forms: React.lazy(() => import("../studies/forms/FormsExample")),
+  hooks: React.lazy(() => import("../studies/hooks/HooksPratica")),
   // "css-modules": React.lazy(() => import("../studies/css-modules/CssModulesExample")),
 };
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const studyItems = [
   { id: "navbar", title: "Construindo um Navbar", description: "Exemplo passo-a-passo de um navbar responsivo." },
-  { id: "forms", title: "Formulários com validação", description: "Validação, máscaras e envio." },
+  { id: "hooks", title: "Usando hooks", description: "Conturindo e entendo hooks" },
   { id: "css-modules", title: "CSS Modules", description: "Boas práticas e exemplos." },
   // adiciona mais itens conforme quiser
 ];
