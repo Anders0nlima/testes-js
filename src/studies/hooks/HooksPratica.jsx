@@ -5,8 +5,8 @@ import styles from "./HooksPraticas.module.css"; // crie se quiser estilizar par
 
 const hookItems = [
   { id: "usestate", title: "useState", description: "Gerenciar estado local em componentes." },
-  { id: "useeffect", title: "useEffect", description: "Executar efeitos colaterais (side effects)." },
   { id: "usecontext", title: "useContext", description: "Compartilhar dados via Context API." },
+  { id: "useeffect", title: "useEffect", description: "Executar efeitos colaterais (side effects)." },
   { id: "useref", title: "useRef", description: "Referências mutáveis sem re-renderização." },
   { id: "usememo", title: "useMemo", description: "Memorizar valores calculados." },
   { id: "usecallback", title: "useCallback", description: "Memorizar funções." },

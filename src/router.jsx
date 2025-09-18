@@ -5,7 +5,7 @@ import { StudyPage } from './paginaPrincipal/StudyPage';
 import HooksPratica from './studies/hooks/HooksPratica';
 import UseStateDemo from './studies/hooks/paginas/UseStateDemo';
 import UseEffectDemo from './studies/hooks/paginas/UseEffectDemo';
-import UseContextDemo from './studies/hooks/paginas/UseContextDemo';
+import UseContextDemo from './studies/hooks/paginas/useContext/UseContextDemo';
 import UseRefDemo from './studies/hooks/paginas/UseRefDemo';
 import UseMemoDemo from './studies/hooks/paginas/UseMemoDemo';
 import UseCallbackDemo from './studies/hooks/paginas/UseCallbackDemo';
