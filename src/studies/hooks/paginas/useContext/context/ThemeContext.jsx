@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import NavBar from "../../../../navbar/Navbar";
 
 /*ter um estado ou dado global que vários componentes precisam acessar*/
 /*a mudança de idioma foi feita usando hook - useContext */
